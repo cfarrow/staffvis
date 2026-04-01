@@ -320,3 +320,112 @@ export async function getCombinedAllocationsAndLoggedTime(
 
     return finalResults;
 }
+
+/**
+ * Formats the combined allocation and logged time data into nodes and edges suitable for vis.Network.
+ * Each person and project becomes a node, and each allocation/logged time combination becomes an edge.
+ * Labels are formatted with aggregated logged and allocated hours, with styling based on comparison.
+ *
+ * @param {Array<Object>} combinedData - The output from getCombinedAllocationsAndLoggedTime.
+ *   Each object: { personName, projectName, allocatedHours, loggedHours }.
+ * @returns {{nodes: Array<Object>, edges: Array<Object>}} An object containing arrays of formatted nodes and edges.
+ */
+export function formatCombinedDataForNetwork(combinedData) {
+    const nodesMap = new Map(); // Key: 'personName' or 'projectName', Value: { id, name, type, totalLogged, totalAllocated }
+    const edges = [];
+
+    let nextNodeId = 1;
+
+    // Helper to get or create a node in the map and assign an ID
+    const getOrCreateNode = (name, type) => {
+        let node = nodesMap.get(name);
+        if (!node) {
+            node = { id: nextNodeId++, name: name, type: type, totalLogged: 0, totalAllocated: 0 };
+            nodesMap.set(name, node);
+        }
+        return node;
+    };
+
+    // First pass: Aggregate data for nodes and prepare node objects
+    for (const entry of combinedData) {
+        if (entry.personName && entry.projectName) {
+            const personNode = getOrCreateNode(entry.personName, 'person');
+            personNode.totalLogged += entry.loggedHours;
+            personNode.totalAllocated += entry.allocatedHours;
+
+            const projectNode = getOrCreateNode(entry.projectName, 'project');
+            projectNode.totalLogged += entry.loggedHours;
+            projectNode.totalAllocated += entry.allocatedHours;
+        }
+    }
+
+    const formattedNodes = [];
+    // Second pass: Create formatted nodes with labels
+    for (const [name, nodeData] of nodesMap.entries()) {
+        const loggedTime = nodeData.totalLogged;
+        const allocatedTime = nodeData.totalAllocated;
+
+        let loggedHtml;
+        if (loggedTime < allocatedTime) {
+            loggedHtml = `<b>${loggedTime.toFixed(1)}</b>`;
+        } else {
+            loggedHtml = `<i>${loggedTime.toFixed(1)}</i>`;
+        }
+
+        let allocatedHtml;
+        if (allocatedTime > loggedTime) {
+            allocatedHtml = `<b>${allocatedTime.toFixed(1)}</b>`;
+        } else {
+            allocatedHtml = `<i>${allocatedTime.toFixed(1)}</i>`;
+        }
+
+        // The label format: loggedTime\n\nName\n\nallocatedTime
+        const label = `${loggedHtml}\n\n${nodeData.name}\n\n${allocatedHtml}`;
+
+        // Assign level based on type for hierarchical layout
+        const level = nodeData.type === 'person' ? 0 : 1;
+
+        formattedNodes.push({
+            id: nodeData.id,
+            label: label,
+            type: nodeData.type, // Custom attribute to easily identify node type
+            level: level
+        });
+    }
+
+    // Third pass: Create edges
+    for (const entry of combinedData) {
+        const personNode = nodesMap.get(entry.personName);
+        const projectNode = nodesMap.get(entry.projectName);
+
+        if (personNode && projectNode) {
+            const loggedTime = entry.loggedHours;
+            const allocatedTime = entry.allocatedHours;
+
+            let loggedHtml;
+            if (loggedTime < allocatedTime) {
+                loggedHtml = `<b>${loggedTime.toFixed(1)}</b>`;
+            } else {
+                loggedHtml = `<i>${loggedTime.toFixed(1)}</i>`;
+            }
+
+            let allocatedHtml;
+            if (allocatedTime > loggedTime) {
+                allocatedHtml = `<b>${allocatedTime.toFixed(1)}</b>`;
+            } else {
+                allocatedHtml = `<i>${allocatedTime.toFixed(1)}</i>`;
+            }
+
+            // The edge label format: loggedTime\n\nallocatedTime
+            const edgeLabel = `${loggedHtml}\n\n${allocatedHtml}`;
+
+            edges.push({
+                from: personNode.id,
+                to: projectNode.id,
+                label: edgeLabel
+            });
+        }
+    }
+
+    return { nodes: formattedNodes, edges: edges };
+}

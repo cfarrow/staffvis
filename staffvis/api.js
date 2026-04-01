@@ -13,56 +13,56 @@ const USER_AGENT = "openteams-ai/staffvis";
  * @returns {Promise<Array>} A promise that resolves to an array of all fetched items.
  */
 async function fetchData(url, headers, queryParams = {}, dataKey) {
-    let allItems = [];
-    let page = 1;
-    let hasMore = true;
+  let allItems = [];
+  let page = 1;
+  let hasMore = true;
 
-    while (hasMore) {
-        const params = new URLSearchParams({
-            ...queryParams,
-        });
+  while (hasMore) {
+    const params = new URLSearchParams({
+      ...queryParams,
+    });
 
-        // Harvest pagination parameters
-        if (headers["Harvest-Account-ID"]) {
-            params.append("page", page);
-            params.append("per_page", 2000); // Harvest max per page
-        }
-
-        const fullUrl = `${url}?${params.toString()}`;
-
-        try {
-            const response = await fetch(fullUrl, { headers });
-            if (!response.ok) {
-                const errorBody = await response.text();
-                throw new Error(`HTTP error! Status: ${response.status}, Body: ${errorBody}`);
-            }
-            const data = await response.json();
-
-            let items;
-            const key = dataKey || Object.keys(data).find(k => Array.isArray(data[k]));
-
-            if (key) {
-                items = data[key];
-            } else {
-                items = [];
-            }
-
-            allItems = allItems.concat(items);
-
-            // Check for Harvest-specific pagination
-            if (headers["Harvest-Account-ID"] && data.page && data.total_pages && data.page < data.total_pages) {
-                page++;
-            } else {
-                hasMore = false;
-            }
-
-        } catch (error) {
-            console.error("Error fetching data:", error);
-            hasMore = false; // Stop on error
-            throw error; // Re-throw to propagate error
-        }
+    // Harvest pagination parameters
+    if (headers["Harvest-Account-ID"]) {
+      params.append("page", page);
+      params.append("per_page", 2000); // Harvest max per page
     }
-    return allItems;
+
+    const fullUrl = `${url}?${params.toString()}`;
+
+    try {
+      const response = await fetch(fullUrl, { headers });
+      if (!response.ok) {
+        const errorBody = await response.text();
+        throw new Error(`HTTP error! Status: ${response.status}, Body: ${errorBody}`);
+      }
+      const data = await response.json();
+
+      let items;
+      const key = dataKey || Object.keys(data).find(k => Array.isArray(data[k]));
+
+      if (key) {
+        items = data[key];
+      } else {
+        items = [];
+      }
+
+      allItems = allItems.concat(items);
+
+      // Check for Harvest-specific pagination
+      if (headers["Harvest-Account-ID"] && data.page && data.total_pages && data.page < data.total_pages) {
+        page++;
+      } else {
+        hasMore = false;
+      }
+
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      hasMore = false; // Stop on error
+      throw error; // Re-throw to propagate error
+    }
+  }
+  return allItems;
 }
 
 /**
@@ -73,24 +73,24 @@ async function fetchData(url, headers, queryParams = {}, dataKey) {
  * @returns {Object} Headers object.
  */
 function getApiHeaders(provider, accessToken, accountId) {
-    if (!accessToken || !accountId) {
-        throw new Error(`Missing accessToken or accountId for ${provider} API.`);
-    }
+  if (!accessToken || !accountId) {
+    throw new Error(`Missing accessToken or accountId for ${provider} API.`);
+  }
 
-    const headers = {
-        "Accept": "application/json",
-        "Authorization": `Bearer ${accessToken}`,
-        "User-Agent": USER_AGENT,
-    };
+  const headers = {
+    "Accept": "application/json",
+    "Authorization": `Bearer ${accessToken}`,
+    "User-Agent": USER_AGENT,
+  };
 
-    if (provider === "Harvest") {
-        headers["Harvest-Account-ID"] = accountId;
-    } else if (provider === "Forecast") {
-        headers["Forecast-Account-ID"] = accountId;
-    } else {
-        throw new Error(`Provider '${provider}' not recognized.`);
-    }
-    return headers;
+  if (provider === "Harvest") {
+    headers["Harvest-Account-ID"] = accountId;
+  } else if (provider === "Forecast") {
+    headers["Forecast-Account-ID"] = accountId;
+  } else {
+    throw new Error(`Provider '${provider}' not recognized.`);
+  }
+  return headers;
 }
 
 // --- Harvest API Functions ---
@@ -104,11 +104,11 @@ function getApiHeaders(provider, accessToken, accountId) {
  * @returns {Promise<Array>} A promise that resolves to an array of fetched items.
  */
 async function getHarvest(endpoint, harvestAccessToken, harvestAccountId, queryParams = {}) {
-    const headers = getApiHeaders("Harvest", harvestAccessToken, harvestAccountId);
-    const url = `${HARVEST_API_URL}${endpoint}`;
-    // Harvest endpoints usually match the data key, pluralized
-    const dataKey = endpoint; 
-    return fetchData(url, headers, queryParams, dataKey);
+  const headers = getApiHeaders("Harvest", harvestAccessToken, harvestAccountId);
+  const url = `${HARVEST_API_URL}${endpoint}`;
+  // Harvest endpoints usually match the data key, pluralized
+  const dataKey = endpoint;
+  return fetchData(url, headers, queryParams, dataKey);
 }
 
 /**
@@ -118,7 +118,7 @@ async function getHarvest(endpoint, harvestAccessToken, harvestAccountId, queryP
  * @returns {Promise<Array>} A promise that resolves to an array of Harvest user objects.
  */
 export async function getHarvestUsers(harvestAccessToken, harvestAccountId) {
-    return getHarvest("users", harvestAccessToken, harvestAccountId);
+  return getHarvest("users", harvestAccessToken, harvestAccountId);
 }
 
 /**
@@ -128,7 +128,7 @@ export async function getHarvestUsers(harvestAccessToken, harvestAccountId) {
  * @returns {Promise<Array>} A promise that resolves to an array of Harvest project objects.
  */
 export async function getHarvestProjects(harvestAccessToken, harvestAccountId) {
-    return getHarvest("projects", harvestAccessToken, harvestAccountId);
+  return getHarvest("projects", harvestAccessToken, harvestAccountId);
 }
 
 /**
@@ -141,12 +141,12 @@ export async function getHarvestProjects(harvestAccessToken, harvestAccountId) {
  * @returns {Promise<Array>} A promise that resolves to an array of Harvest time entry objects.
  */
 export async function getHarvestTimeEntries(harvestAccessToken, harvestAccountId, from, to, additionalQueryParams = {}) {
-    const queryParams = {
-        from: from,
-        to: to,
-        ...additionalQueryParams
-    };
-    return getHarvest("time_entries", harvestAccessToken, harvestAccountId, queryParams);
+  const queryParams = {
+    from: from,
+    to: to,
+    ...additionalQueryParams
+  };
+  return getHarvest("time_entries", harvestAccessToken, harvestAccountId, queryParams);
 }
 
 
@@ -161,21 +161,21 @@ export async function getHarvestTimeEntries(harvestAccessToken, harvestAccountId
  * @returns {Promise<Array>} A promise that resolves to an array of fetched items.
  */
 async function getForecast(endpoint, forecastAccessToken, forecastAccountId, queryParams = {}) {
-    const headers = getApiHeaders("Forecast", forecastAccessToken, forecastAccountId);
-    const url = `${FORECAST_API_URL}${endpoint}`;
+  const headers = getApiHeaders("Forecast", forecastAccessToken, forecastAccountId);
+  const url = `${FORECAST_API_URL}${endpoint}`;
 
-    // Add default date range for Forecast if not provided, replicating Python logic
-    if (!queryParams.start_date && !queryParams.end_date) {
-        const endDate = new Date();
-        const startDate = new Date();
-        startDate.setDate(endDate.getDate() - 31); // Last 31 days
+  // Add default date range for Forecast if not provided, replicating Python logic
+  if (!queryParams.start_date && !queryParams.end_date) {
+    const endDate = new Date();
+    const startDate = new Date();
+    startDate.setDate(endDate.getDate() - 31); // Last 31 days
 
-        queryParams.start_date = startDate.toISOString().split('T')[0];
-        queryParams.end_date = endDate.toISOString().split('T')[0];
-    }
-    // Forecast endpoints usually match the data key, pluralized
-    const dataKey = endpoint;
-    return fetchData(url, headers, queryParams, dataKey);
+    queryParams.start_date = startDate.toISOString().split('T')[0];
+    queryParams.end_date = endDate.toISOString().split('T')[0];
+  }
+  // Forecast endpoints usually match the data key, pluralized
+  const dataKey = endpoint;
+  return fetchData(url, headers, queryParams, dataKey);
 }
 
 
@@ -186,7 +186,7 @@ async function getForecast(endpoint, forecastAccessToken, forecastAccountId, que
  * @returns {Promise<Array>} A promise that resolves to an array of Forecast person objects.
  */
 export async function getForecastPeople(forecastAccessToken, forecastAccountId) {
-    return getForecast("people", forecastAccessToken, forecastAccountId);
+  return getForecast("people", forecastAccessToken, forecastAccountId);
 }
 
 /**
@@ -198,10 +198,10 @@ export async function getForecastPeople(forecastAccessToken, forecastAccountId) 
  * @returns {Promise<Array>} A promise that resolves to an array of Forecast assignment objects.
  */
 export async function getForecastAssignments(forecastAccessToken, forecastAccountId, startDate, endDate) {
-    const queryParams = {};
-    if (startDate) queryParams.start_date = startDate;
-    if (endDate) queryParams.end_date = endDate;
-    return getForecast("assignments", forecastAccessToken, forecastAccountId, queryParams);
+  const queryParams = {};
+  if (startDate) queryParams.start_date = startDate;
+  if (endDate) queryParams.end_date = endDate;
+  return getForecast("assignments", forecastAccessToken, forecastAccountId, queryParams);
 }
 
 /**
@@ -217,7 +217,9 @@ export async function getForecastAssignments(forecastAccessToken, forecastAccoun
 export async function getCombinedAllocationsAndLoggedTime(
     harvestAccessToken,
     harvestAccountId,
-    forecastAccountId
+    forecastAccountId,
+    startDate = null, // New parameter for custom start date
+    endDate = null    // New parameter for custom end date
 ) {
     if (!harvestAccessToken) {
         throw new Error("Missing HARVEST_ACCESS_TOKEN.");
@@ -229,24 +231,34 @@ export async function getCombinedAllocationsAndLoggedTime(
         throw new Error("Missing FORECAST_ACCOUNT_ID.");
     }
 
-    // Calculate dates for the previous full week (Monday-Sunday)
-    const currentDate = new Date();
-    const dayOfWeek = currentDate.getDay(); // 0 for Sunday, 1 for Monday...
+    let fromDate, toDate;
 
-    // Adjust `currentDate` to be the end of the previous week (last Sunday)
-    const daysToSubtractForLastSunday = dayOfWeek === 0 ? 7 : dayOfWeek;
-    const lastSundayDate = new Date(currentDate);
-    lastSundayDate.setDate(currentDate.getDate() - daysToSubtractForLastSunday);
-    lastSundayDate.setHours(0, 0, 0, 0); // Normalize to start of day
+    // Determine the date range
+    if (startDate && endDate) {
+        fromDate = startDate;
+        toDate = endDate;
+    } else {
+        // Default to the previous full week (Monday-Sunday)
+        const currentDate = new Date();
+        const dayOfWeek = currentDate.getDay(); // 0 for Sunday, 1 for Monday...
 
-    const mondayOfPreviousWeekDate = new Date(lastSundayDate);
-    mondayOfPreviousWeekDate.setDate(lastSundayDate.getDate() - 6);
-    mondayOfPreviousWeekDate.setHours(0, 0, 0, 0); // Normalize to start of day
+        // Calculate last Sunday (end of the previous week)
+        // If today is Sunday, subtract 7 days to get last Sunday. Otherwise, subtract `dayOfWeek` days.
+        const daysToSubtractForLastSunday = dayOfWeek === 0 ? 7 : dayOfWeek;
+        const lastSundayDate = new Date(currentDate);
+        lastSundayDate.setDate(currentDate.getDate() - daysToSubtractForLastSunday);
+        lastSundayDate.setHours(0, 0, 0, 0); // Normalize to start of day
 
-    const fromDate = mondayOfPreviousWeekDate.toISOString().split('T')[0];
-    const toDate = lastSundayDate.toISOString().split('T')[0];
+        // Calculate Monday of the previous week
+        const mondayOfPreviousWeekDate = new Date(lastSundayDate);
+        mondayOfPreviousWeekDate.setDate(lastSundayDate.getDate() - 6);
+        mondayOfPreviousWeekDate.setHours(0, 0, 0, 0); // Normalize to start of day
 
-    console.log(`Fetching data for previous week: ${fromDate} to ${toDate}`);
+        fromDate = mondayOfPreviousWeekDate.toISOString().split('T')[0];
+        toDate = lastSundayDate.toISOString().split('T')[0];
+    }
+
+    console.log(`Fetching data for range: ${fromDate} to ${toDate}`);
 
     // --- Fetch all necessary data concurrently ---
     // Note: Forecast API also uses the Harvest Personal Access Token.
@@ -287,6 +299,8 @@ export async function getCombinedAllocationsAndLoggedTime(
     };
 
     // --- Process Forecast Allocations ---
+    // Assuming forecastAssignments contains daily allocation records within the specified range.
+    // The loop inherently sums these daily allocations over the entire period.
     for (const assignment of forecastAssignments) {
         const personName = forecastPeopleMap.get(assignment.person_id);
         const projectName = forecastProjectsMap.get(assignment.project_id); // Use Forecast's project name
@@ -331,101 +345,91 @@ export async function getCombinedAllocationsAndLoggedTime(
  * @returns {{nodes: Array<Object>, edges: Array<Object>}} An object containing arrays of formatted nodes and edges.
  */
 export function formatCombinedDataForNetwork(combinedData) {
-    const nodesMap = new Map(); // Key: 'personName' or 'projectName', Value: { id, name, type, totalLogged, totalAllocated }
-    const edges = [];
+  const nodesMap = new Map(); // Key: 'personName' or 'projectName', Value: { id, name, type, totalLogged, totalAllocated }
+  const edges = [];
 
-    let nextNodeId = 1;
+  let nextNodeId = 1;
 
-    // Helper to get or create a node in the map and assign an ID
-    const getOrCreateNode = (name, type) => {
-        let node = nodesMap.get(name);
-        if (!node) {
-            node = { id: nextNodeId++, name: name, type: type, totalLogged: 0, totalAllocated: 0 };
-            nodesMap.set(name, node);
-        }
-        return node;
-    };
+  // Helper to get or create a node in the map and assign an ID
+  const getOrCreateNode = (name, type) => {
+    let node = nodesMap.get(name);
+    if (!node) {
+      node = { id: nextNodeId++, name: name, type: type, totalLogged: 0, totalAllocated: 0 };
+      nodesMap.set(name, node);
+    }
+    return node;
+  };
 
-    // First pass: Aggregate data for nodes and prepare node objects
-    for (const entry of combinedData) {
-        if (entry.personName && entry.projectName) {
-            const personNode = getOrCreateNode(entry.personName, 'person');
-            personNode.totalLogged += entry.loggedHours;
-            personNode.totalAllocated += entry.allocatedHours;
+  // First pass: Aggregate data for nodes and prepare node objects
+  for (const entry of combinedData) {
+    if (entry.personName && entry.projectName) {
+      const personNode = getOrCreateNode(entry.personName, 'person');
+      personNode.totalLogged += entry.loggedHours;
+      personNode.totalAllocated += entry.allocatedHours;
 
-            const projectNode = getOrCreateNode(entry.projectName, 'project');
-            projectNode.totalLogged += entry.loggedHours;
-            projectNode.totalAllocated += entry.allocatedHours;
-        }
+      const projectNode = getOrCreateNode(entry.projectName, 'project');
+      projectNode.totalLogged += entry.loggedHours;
+      projectNode.totalAllocated += entry.allocatedHours;
+    }
+  }
+
+  const formattedNodes = [];
+  // Second pass: Create formatted nodes with labels
+  for (const [name, nodeData] of nodesMap.entries()) {
+    const loggedTime = nodeData.totalLogged;
+    const allocatedTime = nodeData.totalAllocated;
+
+    let loggedHtml;
+    if (loggedTime < allocatedTime) {
+      loggedHtml = `<b>${loggedTime.toFixed(1)}</b>`;
+    } else {
+      loggedHtml = `<i>${loggedTime.toFixed(1)}</i>`;
     }
 
-    const formattedNodes = [];
-    // Second pass: Create formatted nodes with labels
-    for (const [name, nodeData] of nodesMap.entries()) {
-        const loggedTime = nodeData.totalLogged;
-        const allocatedTime = nodeData.totalAllocated;
+    let allocatedHtml = allocatedTime.toFixed(1);
 
-        let loggedHtml;
-        if (loggedTime < allocatedTime) {
-            loggedHtml = `<b>${loggedTime.toFixed(1)}</b>`;
-        } else {
-            loggedHtml = `<i>${loggedTime.toFixed(1)}</i>`;
-        }
+    // The label format: loggedTime\n\nName\n\nallocatedTime
+    const label = `${loggedHtml}\n\n${nodeData.name}\n\n${allocatedHtml}`;
 
-        let allocatedHtml;
-        if (allocatedTime > loggedTime) {
-            allocatedHtml = `<b>${allocatedTime.toFixed(1)}</b>`;
-        } else {
-            allocatedHtml = `<i>${allocatedTime.toFixed(1)}</i>`;
-        }
+    // Assign level based on type for hierarchical layout
+    const level = nodeData.type === 'person' ? 0 : 1;
 
-        // The label format: loggedTime\n\nName\n\nallocatedTime
-        const label = `${loggedHtml}\n\n${nodeData.name}\n\n${allocatedHtml}`;
+    formattedNodes.push({
+      id: nodeData.id,
+      label: label,
+      type: nodeData.type, // Custom attribute to easily identify node type
+      level: level
+    });
+  }
 
-        // Assign level based on type for hierarchical layout
-        const level = nodeData.type === 'person' ? 0 : 1;
+  // Third pass: Create edges
+  for (const entry of combinedData) {
+    const personNode = nodesMap.get(entry.personName);
+    const projectNode = nodesMap.get(entry.projectName);
 
-        formattedNodes.push({
-            id: nodeData.id,
-            label: label,
-            type: nodeData.type, // Custom attribute to easily identify node type
-            level: level
-        });
+    if (personNode && projectNode) {
+      const loggedTime = entry.loggedHours;
+      const allocatedTime = entry.allocatedHours;
+
+      let loggedHtml;
+      if (loggedTime < allocatedTime) {
+        loggedHtml = `<b>${loggedTime.toFixed(1)}</b>`;
+      } else {
+        loggedHtml = `<i>${loggedTime.toFixed(1)}</i>`;
+      }
+
+      let allocatedHtml = allocatedTime.toFixed(1);
+
+      // The edge label format: loggedTime\n\nallocatedTime
+      const edgeLabel = `${loggedHtml}\n\n${allocatedHtml}`;
+
+      edges.push({
+        from: personNode.id,
+        to: projectNode.id,
+        label: edgeLabel
+      });
     }
+  }
 
-    // Third pass: Create edges
-    for (const entry of combinedData) {
-        const personNode = nodesMap.get(entry.personName);
-        const projectNode = nodesMap.get(entry.projectName);
-
-        if (personNode && projectNode) {
-            const loggedTime = entry.loggedHours;
-            const allocatedTime = entry.allocatedHours;
-
-            let loggedHtml;
-            if (loggedTime < allocatedTime) {
-                loggedHtml = `<b>${loggedTime.toFixed(1)}</b>`;
-            } else {
-                loggedHtml = `<i>${loggedTime.toFixed(1)}</i>`;
-            }
-
-            let allocatedHtml;
-            if (allocatedTime > loggedTime) {
-                allocatedHtml = `<b>${allocatedTime.toFixed(1)}</b>`;
-            } else {
-                allocatedHtml = `<i>${allocatedTime.toFixed(1)}</i>`;
-            }
-
-            // The edge label format: loggedTime\n\nallocatedTime
-            const edgeLabel = `${loggedHtml}\n\n${allocatedHtml}`;
-
-            edges.push({
-                from: personNode.id,
-                to: projectNode.id,
-                label: edgeLabel
-            });
-        }
-    }
-
-    return { nodes: formattedNodes, edges: edges };
+  return { nodes: formattedNodes, edges: edges };
 }

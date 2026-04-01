@@ -1,4 +1,6 @@
 
+import { formatCombinedDataForNetwork, getCombinedAllocationsAndLoggedTime } from "./api.js";
+
 // Base options for each node
 const nodeopts = {
   shape: "box",
@@ -9,7 +11,7 @@ const edgeopts = {
   font: { multi: true }
 }
 // Using a bipartite graph, persons on the left and projects on the right.
-const person =  { ...nodeopts, level: 0 }
+const person = { ...nodeopts, level: 0 }
 const project = { ...nodeopts, level: 1 }
 
 // Options for the plot. We can adjust the fonts within a given label
@@ -24,29 +26,40 @@ const fontopts = {
   }
 }
 
-var options = {
+const options = {
   width: '100%',
   height: '800px',
   layout: {
     hierarchical: {
       enabled: true,
+      levelSeparation: 300,
+      nodeSpacing: 100,
       direction: "LR"
     }
   },
   nodes: {
-    font : fontopts,
+    font: fontopts,
   },
   edges: {
-    font : {background: "#ffffff", ...fontopts},
+    font: { background: "#ffffff", ...fontopts },
+  },
+  physics: {
+    enabled: false,
+    barnesHut: {
+      springLength: 1000,
+      centralGravity: 0.01,
+      gravitationalConstant: -10,
+      sprintConstant: 0.01,
+      avoidOverlap: 1
+    }
   }
 };
 
-// Load data from data.json
 fetch('data.json')
   .then(response => response.json())
   .then(data => {
     // create an array with nodes
-    var nodes = new vis.DataSet(data.nodes.map(node => {
+    let nodes = new vis.DataSet(data.nodes.map(node => {
       if (node.type === 'person') {
         return { ...node, ...person };
       } else if (node.type === 'project') {
@@ -56,19 +69,16 @@ fetch('data.json')
     }));
 
     // create an array with edges
-    var edges = new vis.DataSet(data.edges.map(edge => {
-	return {...edge, ...edgeopts}
+    let edges = new vis.DataSet(data.edges.map(edge => {
+      return { ...edge, ...edgeopts }
     }));
 
     // Render
-    var container = document.getElementById("mynetwork");
-    var graphData = {
+    let container = document.getElementById("mynetwork");
+    let graphData = {
       nodes: nodes,
       edges: edges,
     };
-    var network = new vis.Network(container, graphData, options);
-  })
-  .catch(error => console.error('Error loading data:', error));
-
-
-
+    let network = new vis.Network(container, graphData, options);
+    network.stabilize(10);
+  });

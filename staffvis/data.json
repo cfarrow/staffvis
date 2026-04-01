@@ -1,0 +1,27 @@
+{
+  "nodes": [
+    { "id": 1, "type": "person",
+    	"label": "<b>35</b>\n\nChris Farrow\n\n36"
+    },
+    { "id": 2, "type": "person",
+    	"label": "<i>40</i>\n\nPierre\n\n36"
+    },
+
+    { "id": 101, "type": "project",
+    	"label": "<b>30</b>\n\nProject Success\n\n32"
+    },
+    { "id": 102, "type": "project",
+    	"label": "<i>25</i>\n\nBusiness\n\n20"
+    },
+    { "id": 103, "type": "project",
+    	"label": "<i>20</i>\n\nHazel\n\n20"
+    }
+
+  ],
+  "edges": [
+    { "from": 1, "to": 101, "label": "<b>30</b>\n32" },
+    { "from": 1, "to": 102, "label": "<i>5</i>\n4" },
+    { "from": 2, "to": 102, "label": "<i>20</i>\n16" },
+    { "from": 2, "to": 103, "label": "<i>20</i>\n20" }
+  ]
+}

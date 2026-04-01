@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "vis": "^4.21.0",
+    "vis-data": "^8.0.3",
+    "vis-network": "^10.0.2"
+  }
+}

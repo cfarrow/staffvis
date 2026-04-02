@@ -3,660 +3,770 @@
     {
       "id": 1,
       "label": "<i>34.0</i>\n\nAlice Smith\n\n6.0",
+      "name": "Alice Smith",
       "type": "person",
       "level": 0
     },
     {
       "id": 2,
       "label": "<i>322.5</i>\n\nApple\n\n55.2",
+      "name": "Apple",
       "type": "project",
       "level": 1
     },
     {
       "id": 3,
       "label": "<i>37.8</i>\n\nBob Johnson\n\n8.8",
+      "name": "Bob Johnson",
       "type": "person",
       "level": 0
     },
     {
       "id": 4,
       "label": "<b>0.0</b>\n\nBanana\n\n0.8",
+      "name": "Banana",
       "type": "project",
       "level": 1
     },
     {
       "id": 5,
       "label": "<i>38.0</i>\n\nCarol White\n\n7.2",
+      "name": "Carol White",
       "type": "person",
       "level": 0
     },
     {
       "id": 6,
       "label": "<i>81.3</i>\n\nCherry\n\n18.4",
+      "name": "Cherry",
       "type": "project",
       "level": 1
     },
     {
       "id": 7,
       "label": "<b>0.0</b>\n\nDate\n\n0.0",
+      "name": "Date",
       "type": "project",
       "level": 1
     },
     {
       "id": 8,
       "label": "<i>15.8</i>\n\nDavid Green\n\n3.0",
+      "name": "David Green",
       "type": "person",
       "level": 0
     },
     {
       "id": 9,
       "label": "<i>56.0</i>\n\nElderberry\n\n4.0",
+      "name": "Elderberry",
       "type": "project",
       "level": 1
     },
     {
       "id": 10,
       "label": "<b>0.0</b>\n\nFig\n\n2.8",
+      "name": "Fig",
       "type": "project",
       "level": 1
     },
     {
       "id": 11,
       "label": "<i>40.0</i>\n\nEve Black\n\n7.2",
+      "name": "Eve Black",
       "type": "person",
       "level": 0
     },
     {
       "id": 12,
       "label": "<i>199.8</i>\n\nGrape\n\n50.6",
+      "name": "Grape",
       "type": "project",
       "level": 1
     },
     {
       "id": 13,
       "label": "<i>40.3</i>\n\nFrank Brown\n\n7.5",
+      "name": "Frank Brown",
       "type": "person",
       "level": 0
     },
     {
       "id": 14,
       "label": "<b>0.0</b>\n\nGrace Davis\n\n8.0",
+      "name": "Grace Davis",
       "type": "person",
       "level": 0
     },
     {
       "id": 15,
       "label": "<i>26.0</i>\n\nHenry Wilson\n\n5.2",
+      "name": "Henry Wilson",
       "type": "person",
       "level": 0
     },
     {
       "id": 16,
       "label": "<i>39.5</i>\n\nIvy Moore\n\n8.0",
+      "name": "Ivy Moore",
       "type": "person",
       "level": 0
     },
     {
       "id": 17,
       "label": "<b>0.0</b>\n\nHoneydew\n\n3.4",
+      "name": "Honeydew",
       "type": "project",
       "level": 1
     },
     {
       "id": 18,
       "label": "<i>36.0</i>\n\nJack Taylor\n\n7.2",
+      "name": "Jack Taylor",
       "type": "person",
       "level": 0
     },
     {
       "id": 19,
       "label": "<i>54.5</i>\n\nIndian Fig\n\n10.6",
+      "name": "Indian Fig",
       "type": "project",
       "level": 1
     },
     {
       "id": 20,
       "label": "<i>20.3</i>\n\nJackfruit\n\n1.4",
+      "name": "Jackfruit",
       "type": "project",
       "level": 1
     },
     {
       "id": 21,
       "label": "<i>32.0</i>\n\nKate Miller\n\n6.4",
+      "name": "Kate Miller",
       "type": "person",
       "level": 0
     },
     {
       "id": 22,
       "label": "<b>0.0</b>\n\nKumquat\n\n0.0",
+      "name": "Kumquat",
       "type": "project",
       "level": 1
     },
     {
       "id": 23,
       "label": "<i>12.3</i>\n\nLemon\n\n1.3",
+      "name": "Lemon",
       "type": "project",
       "level": 1
     },
     {
       "id": 24,
       "label": "<i>49.0</i>\n\nLiam Anderson\n\n7.2",
+      "name": "Liam Anderson",
       "type": "person",
       "level": 0
     },
     {
       "id": 25,
       "label": "<b>0.0</b>\n\nMango\n\n0.0",
+      "name": "Mango",
       "type": "project",
       "level": 1
     },
     {
       "id": 26,
       "label": "<i>28.5</i>\n\nNectarine\n\n2.0",
+      "name": "Nectarine",
       "type": "project",
       "level": 1
     },
     {
       "id": 27,
       "label": "<i>39.3</i>\n\nMia Thomas\n\n7.2",
+      "name": "Mia Thomas",
       "type": "person",
       "level": 0
     },
     {
       "id": 28,
       "label": "<i>13.8</i>\n\nOrange\n\n2.0",
+      "name": "Orange",
       "type": "project",
       "level": 1
     },
     {
       "id": 29,
       "label": "<i>36.0</i>\n\nNoah Jackson\n\n7.2",
+      "name": "Noah Jackson",
       "type": "person",
       "level": 0
     },
     {
       "id": 30,
       "label": "<i>40.0</i>\n\nOlivia Harris\n\n7.2",
+      "name": "Olivia Harris",
       "type": "person",
       "level": 0
     },
     {
       "id": 31,
       "label": "<b>0.0</b>\n\nPeter Clark\n\n0.5",
+      "name": "Peter Clark",
       "type": "person",
       "level": 0
     },
     {
       "id": 32,
       "label": "<i>21.8</i>\n\nPapaya\n\n8.0",
+      "name": "Papaya",
       "type": "project",
       "level": 1
     },
     {
       "id": 33,
       "label": "<i>21.0</i>\n\nQuinn Lewis\n\n5.0",
+      "name": "Quinn Lewis",
       "type": "person",
       "level": 0
     },
     {
       "id": 34,
       "label": "<b>0.0</b>\n\nRachel King\n\n2.0",
+      "name": "Rachel King",
       "type": "person",
       "level": 0
     },
     {
       "id": 35,
       "label": "<i>30.0</i>\n\nSam Wright\n\n0.5",
+      "name": "Sam Wright",
       "type": "person",
       "level": 0
     },
     {
       "id": 36,
       "label": "<i>35.8</i>\n\nTina Hall\n\n7.2",
+      "name": "Tina Hall",
       "type": "person",
       "level": 0
     },
     {
       "id": 37,
       "label": "<i>37.3</i>\n\nUma Scott\n\n7.2",
+      "name": "Uma Scott",
       "type": "person",
       "level": 0
     },
     {
       "id": 38,
       "label": "<i>0.5</i>\n\nQuince\n\n0.0",
+      "name": "Quince",
       "type": "project",
       "level": 1
     },
     {
       "id": 39,
       "label": "<i>36.0</i>\n\nVictor Adams\n\n7.5",
+      "name": "Victor Adams",
       "type": "person",
       "level": 0
     },
     {
       "id": 40,
       "label": "<i>36.8</i>\n\nWendy Baker\n\n7.2",
+      "name": "Wendy Baker",
       "type": "person",
       "level": 0
     },
     {
       "id": 41,
       "label": "<i>39.0</i>\n\nXena Turner\n\n7.2",
+      "name": "Xena Turner",
       "type": "person",
       "level": 0
     },
     {
       "id": 42,
       "label": "<i>36.0</i>\n\nYash Walker\n\n10.4",
+      "name": "Yash Walker",
       "type": "person",
       "level": 0
     },
     {
       "id": 43,
       "label": "<i>11.5</i>\n\nRaspberry\n\n3.8",
+      "name": "Raspberry",
       "type": "project",
       "level": 1
     },
     {
       "id": 44,
       "label": "<i>40.0</i>\n\nZoe Young\n\n7.2",
+      "name": "Zoe Young",
       "type": "person",
       "level": 0
     },
     {
       "id": 45,
       "label": "<i>19.0</i>\n\nAdam Carter\n\n7.2",
+      "name": "Adam Carter",
       "type": "person",
       "level": 0
     },
     {
       "id": 46,
       "label": "<i>6.3</i>\n\nStrawberry\n\n2.0",
+      "name": "Strawberry",
       "type": "project",
       "level": 1
     },
     {
       "id": 47,
       "label": "<i>36.5</i>\n\nBella Perez\n\n10.4",
+      "name": "Bella Perez",
       "type": "person",
       "level": 0
     },
     {
       "id": 48,
       "label": "<b>0.0</b>\n\nTangerine\n\n3.2",
+      "name": "Tangerine",
       "type": "project",
       "level": 1
     },
     {
       "id": 49,
       "label": "<i>27.8</i>\n\nUgli Fruit\n\n8.0",
+      "name": "Ugli Fruit",
       "type": "project",
       "level": 1
     },
     {
       "id": 50,
       "label": "<i>58.8</i>\n\nVanilla Bean\n\n10.5",
+      "name": "Vanilla Bean",
       "type": "project",
       "level": 1
     },
     {
       "id": 51,
       "label": "<i>5.8</i>\n\nWatermelon\n\n0.8",
+      "name": "Watermelon",
       "type": "project",
       "level": 1
     },
     {
       "id": 52,
       "label": "<i>40.8</i>\n\nChris Evans\n\n7.2",
+      "name": "Chris Evans",
       "type": "person",
       "level": 0
     },
     {
       "id": 53,
       "label": "<i>36.0</i>\n\nDiana Rodriguez\n\n7.2",
+      "name": "Diana Rodriguez",
       "type": "person",
       "level": 0
     },
     {
       "id": 54,
       "label": "<i>36.0</i>\n\nEthan Martinez\n\n7.2",
+      "name": "Ethan Martinez",
       "type": "person",
       "level": 0
     },
     {
       "id": 55,
       "label": "<i>6.0</i>\n\nXigua\n\n1.2",
+      "name": "Xigua",
       "type": "project",
       "level": 1
     },
     {
       "id": 56,
       "label": "<i>36.0</i>\n\nFiona Hernandez\n\n8.0",
+      "name": "Fiona Hernandez",
       "type": "person",
       "level": 0
     },
     {
       "id": 57,
       "label": "<i>28.0</i>\n\nYellow Passion Fruit\n\n4.4",
+      "name": "Yellow Passion Fruit",
       "type": "project",
       "level": 1
     },
     {
       "id": 58,
       "label": "<i>36.0</i>\n\nGeorge Lee\n\n7.2",
+      "name": "George Lee",
       "type": "person",
       "level": 0
     },
     {
       "id": 59,
       "label": "<i>20.0</i>\n\nZucchini\n\n4.0",
+      "name": "Zucchini",
       "type": "project",
       "level": 1
     },
     {
       "id": 60,
       "label": "<i>18.0</i>\n\nHannah Garcia\n\n4.0",
+      "name": "Hannah Garcia",
       "type": "person",
       "level": 0
     },
     {
       "id": 61,
       "label": "<b>0.0</b>\n\nApricot\n\n0.8",
+      "name": "Apricot",
       "type": "project",
       "level": 1
     },
     {
       "id": 62,
       "label": "<i>40.0</i>\n\nIsaac Kim\n\n7.2",
+      "name": "Isaac Kim",
       "type": "person",
       "level": 0
     },
     {
       "id": 63,
       "label": "<i>192.8</i>\n\nBlackberry\n\n7.2",
+      "name": "Blackberry",
       "type": "project",
       "level": 1
     },
     {
       "id": 64,
       "label": "<i>40.0</i>\n\nJulia Chen\n\n7.2",
+      "name": "Julia Chen",
       "type": "person",
       "level": 0
     },
     {
       "id": 65,
       "label": "<b>2.8</b>\n\nCranberry\n\n3.6",
+      "name": "Cranberry",
       "type": "project",
       "level": 1
     },
     {
       "id": 66,
       "label": "<i>40.0</i>\n\nKevin Green\n\n7.2",
+      "name": "Kevin Green",
       "type": "person",
       "level": 0
     },
     {
       "id": 67,
       "label": "<i>40.0</i>\n\nDurian\n\n7.4",
+      "name": "Durian",
       "type": "project",
       "level": 1
     },
     {
       "id": 68,
       "label": "<i>72.0</i>\n\nEggplant\n\n13.4",
+      "name": "Eggplant",
       "type": "project",
       "level": 1
     },
     {
       "id": 69,
       "label": "<i>40.0</i>\n\nLily Hall\n\n7.2",
+      "name": "Lily Hall",
       "type": "person",
       "level": 0
     },
     {
       "id": 70,
       "label": "<i>40.0</i>\n\nFeijoa\n\n7.2",
+      "name": "Feijoa",
       "type": "project",
       "level": 1
     },
     {
       "id": 71,
       "label": "<i>37.5</i>\n\nMike Davis\n\n14.4",
+      "name": "Mike Davis",
       "type": "person",
       "level": 0
     },
     {
       "id": 72,
       "label": "<b>0.0</b>\n\nGuava\n\n7.2",
+      "name": "Guava",
       "type": "project",
       "level": 1
     },
     {
       "id": 73,
       "label": "<i>84.8</i>\n\nHuckleberry\n\n21.4",
+      "name": "Huckleberry",
       "type": "project",
       "level": 1
     },
     {
       "id": 74,
       "label": "<i>37.0</i>\n\nNina Brown\n\n7.2",
+      "name": "Nina Brown",
       "type": "person",
       "level": 0
     },
     {
       "id": 75,
       "label": "<i>29.3</i>\n\nImbe\n\n5.6",
+      "name": "Imbe",
       "type": "project",
       "level": 1
     },
     {
       "id": 76,
       "label": "<i>1.0</i>\n\nJava Plum\n\n0.2",
+      "name": "Java Plum",
       "type": "project",
       "level": 1
     },
     {
       "id": 77,
       "label": "<i>71.8</i>\n\nKiwi\n\n4.0",
+      "name": "Kiwi",
       "type": "project",
       "level": 1
     },
     {
       "id": 78,
       "label": "<i>40.0</i>\n\nOliver White\n\n7.2",
+      "name": "Oliver White",
       "type": "person",
       "level": 0
     },
     {
       "id": 79,
       "label": "<i>63.0</i>\n\nPenny Johnson\n\n7.2",
+      "name": "Penny Johnson",
       "type": "person",
       "level": 0
     },
     {
       "id": 80,
       "label": "<i>43.0</i>\n\nRobert Smith\n\n1.6",
+      "name": "Robert Smith",
       "type": "person",
       "level": 0
     },
     {
       "id": 81,
       "label": "<i>131.3</i>\n\nLychee\n\n20.2",
+      "name": "Lychee",
       "type": "project",
       "level": 1
     },
     {
       "id": 82,
       "label": "<i>40.0</i>\n\nErik Postma\n\n7.2",
+      "name": "Josh Portman",
       "type": "person",
       "level": 0
     },
     {
       "id": 83,
       "label": "<i>40.0</i>\n\nBrandon Geraci\n\n7.2",
+      "name": "Brandon Keen",
       "type": "person",
       "level": 0
     },
     {
       "id": 84,
       "label": "<i>36.8</i>\n\nLychee\n\n29.4",
+      "name": "Lychee",
       "type": "project",
       "level": 1
     },
     {
       "id": 85,
       "label": "<i>30.0</i>\n\nSarah Miller\n\n7.2",
+      "name": "Sarah Miller",
       "type": "person",
       "level": 0
     },
     {
       "id": 86,
       "label": "<i>37.3</i>\n\nTom Jones\n\n7.2",
+      "name": "Tom Jones",
       "type": "person",
       "level": 0
     },
     {
       "id": 87,
       "label": "<i>56.0</i>\n\nVicky Williams\n\n7.2",
+      "name": "Vicky Williams",
       "type": "person",
       "level": 0
     },
     {
       "id": 88,
       "label": "<i>32.0</i>\n\nWalter Clark\n\n0.0",
+      "name": "Walter Clark",
       "type": "person",
       "level": 0
     },
     {
       "id": 89,
       "label": "<i>32.0</i>\n\nMulberry\n\n0.0",
+      "name": "Mulberry",
       "type": "project",
       "level": 1
     },
     {
       "id": 90,
       "label": "<i>40.0</i>\n\nYvonne Green\n\n0.0",
+      "name": "Yvonne Green",
       "type": "person",
       "level": 0
     },
     {
       "id": 91,
       "label": "<i>18.0</i>\n\nZach Taylor\n\n0.0",
+      "name": "Zach Taylor",
       "type": "person",
       "level": 0
     },
     {
       "id": 92,
       "label": "<i>131.0</i>\n\nOlive\n\n0.0",
+      "name": "Olive",
       "type": "project",
       "level": 1
     },
     {
       "id": 93,
       "label": "<i>40.0</i>\n\nAbigail King\n\n0.0",
+      "name": "Abigail King",
       "type": "person",
       "level": 0
     },
     {
       "id": 94,
       "label": "<i>111.5</i>\n\nPeach\n\n0.0",
+      "name": "Peach",
       "type": "project",
       "level": 1
     },
     {
       "id": 95,
       "label": "<i>40.3</i>\n\nBenjamin Lee\n\n0.0",
+      "name": "Benjamin Lee",
       "type": "person",
       "level": 0
     },
     {
       "id": 96,
       "label": "<i>16.0</i>\n\nCharlotte Hall\n\n0.0",
+      "name": "Charlotte Hall",
       "type": "person",
       "level": 0
     },
     {
       "id": 97,
       "label": "<i>16.0</i>\n\nPersimmon\n\n0.0",
+      "name": "Persimmon",
       "type": "project",
       "level": 1
     },
     {
       "id": 98,
       "label": "<i>40.0</i>\n\nDaniel Garcia\n\n0.0",
+      "name": "Daniel Garcia",
       "type": "person",
       "level": 0
     },
     {
       "id": 99,
       "label": "<i>40.0</i>\n\nPineapple\n\n0.0",
+      "name": "Pineapple",
       "type": "project",
       "level": 1
     },
     {
       "id": 100,
       "label": "<i>12.5</i>\n\nPlum\n\n0.0",
+      "name": "Plum",
       "type": "project",
       "level": 1
     },
     {
       "id": 101,
       "label": "<i>5.5</i>\n\nEmily Brown\n\n0.0",
+      "name": "Emily Brown",
       "type": "person",
       "level": 0
     },
     {
       "id": 102,
       "label": "<i>36.3</i>\n\nFred White\n\n0.0",
+      "name": "Fred White",
       "type": "person",
       "level": 0
     },
     {
       "id": 103,
       "label": "<i>41.0</i>\n\nGina Harris\n\n0.0",
+      "name": "Gina Harris",
       "type": "person",
       "level": 0
     },
     {
       "id": 104,
       "label": "<i>42.3</i>\n\nHarry Davis\n\n0.0",
+      "name": "Harry Davis",
       "type": "person",
       "level": 0
     },
     {
       "id": 105,
       "label": "<i>40.0</i>\n\nIrene Wilson\n\n0.0",
+      "name": "Irene Wilson",
       "type": "person",
       "level": 0
     },
     {
       "id": 106,
       "label": "<i>2.0</i>\n\nRambutan\n\n0.0",
+      "name": "Rambutan",
       "type": "project",
       "level": 1
     },
     {
       "id": 107,
       "label": "<i>5.0</i>\n\nJohn Moore\n\n0.0",
+      "name": "John Moore",
       "type": "person",
       "level": 0
     },
     {
       "id": 108,
       "label": "<i>5.0</i>\n\nSalak\n\n0.0",
+      "name": "Salak",
       "type": "project",
       "level": 1
     },
     {
       "id": 109,
       "label": "<i>2.5</i>\n\nSapodilla\n\n0.0",
+      "name": "Sapodilla",
       "type": "project",
       "level": 1
     },
     {
       "id": 110,
       "label": "<i>23.8</i>\n\nTamarind\n\n0.0",
+      "name": "Tamarind",
       "type": "project",
       "level": 1
     }
@@ -1050,7 +1160,7 @@
     {
       "from": 16,
       "to": 57,
-      "label": "<b>0.0</b>\n\n0.0"
+      "label": "<b>0.0</b>\n\n0.2"
     },
     {
       "from": 16,

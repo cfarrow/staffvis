@@ -1,15 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Simple Network</title>
+    <title>Staff Visualizer</title>
+    <style>
+        body {
+            display: flex; /* Use flexbox for layout */
+            margin: 0;
+            height: 100vh; /* Full viewport height */
+            font-family: Arial, sans-serif;
+        }
+        #sidebar {
+            width: 250px; /* Fixed width for the sidebar */
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-right: 1px solid #ccc;
+            overflow-y: auto; /* Enable scrolling if content overflows */
+            display: flex;
+            flex-direction: column;
+        }
+        #main-content {
+            flex-grow: 1; /* Main content takes remaining space */
+            display: flex;
+            flex-direction: column;
+        }
+        #mynetwork {
+            flex-grow: 1; /* Network takes all available space in main-content */
+            border: 1px solid lightgray;
+            background-color: #f9f9f9;
+        }
+        select {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 5px;
+            height: 200px; /* Fixed height for multi-selects */
+        }
+        h2 {
+            font-size: 1.2em;
+            margin-top: 10px;
+            margin-bottom: 5px;
+        }
+    </style>
 </head>
 
 <body>
+    <div id="sidebar">
+        <h2>People</h2>
+        <select id="person-selector" multiple></select>
 
-    <div id="mynetwork"></div>
+        <h2>Projects</h2>
+        <select id="project-selector" multiple></select>
+    </div>
+
+    <div id="main-content">
+        <div id="mynetwork"></div>
+    </div>
 
     <script type="text/javascript" src="./node_modules/vis/dist/vis.js"></script>
-
     <script type="module" src="network.js"></script>
 
 </body>

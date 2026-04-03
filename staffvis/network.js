@@ -73,6 +73,25 @@ function initializeSelectors() {
   projectSelector.addEventListener('change', filterNetwork);
 }
 
+// Function to compose labels
+function composeLabel(obj) {
+  const logged = parseFloat(obj.logged_time) || 0;
+  const alloc = parseFloat(obj.allocation) || 0;
+  let taggedLogged = logged.toFixed(1);
+  
+  if (logged < alloc) {
+    taggedLogged = `<b>${taggedLogged}</b>`;
+  } else {
+    taggedLogged = `<i>${taggedLogged}</i>`;
+  }
+
+  if (obj.name) {
+    return `${taggedLogged}\n\n${obj.name}\n\n${alloc.toFixed(1)}`;
+  } else {
+    return `${taggedLogged}\n\n${alloc.toFixed(1)}`;
+  }
+}
+
 // Function to filter the network based on selected items in the dropdowns
 function filterNetwork() {
   const personSelector = document.getElementById('person-selector');
@@ -150,6 +169,7 @@ function filterNetwork() {
     allNodes = jsonData.nodes.map(node => {
       let defaults = node.type === 'person' ? personNodeDefaults : projectNodeDefaults;
       let fullNode = { ...defaults, ...node };
+      fullNode.label = composeLabel(node);
       nodeMap.set(node.id, fullNode);
       if (node.name) {
         nodeNameToIdMap.set(node.name, node.id);
@@ -159,7 +179,11 @@ function filterNetwork() {
       return fullNode;
     });
 
-    allEdges = jsonData.edges.map(edge => ({ ...edge, ...edgeopts }));
+    allEdges = jsonData.edges.map(edge => ({ 
+      ...edge, 
+      ...edgeopts,
+      label: composeLabel(edge)
+    }));
 
     // Build connection maps for filtering
     allEdges.forEach(edge => {

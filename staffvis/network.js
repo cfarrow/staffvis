@@ -269,15 +269,9 @@ function filterNetwork() {
             const opt = Array.from(projectSelector.options).find(o => o.value === clickedNode.name);
             if (opt) opt.selected = true;
           }
+          filterNetwork();
         }
-      } else {
-        // Clear all filters if clicking on the background
-        Array.from(personSelector.options).forEach(opt => opt.selected = false);
-        Array.from(projectSelector.options).forEach(opt => opt.selected = false);
       }
-
-      // Update graph based on new widget state
-      filterNetwork();
     });
 
     // Initialize selectors and apply initial view

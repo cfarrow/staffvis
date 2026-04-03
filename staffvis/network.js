@@ -1,31 +1,26 @@
 
 // Base options for each node
+const fontopts = {
+  multi: true,
+  bold: {
+    color: '#ef004c' // Bold is red bold
+  },
+  ital: {
+    color: '#00b000',
+    mod: 'bold'  // Italic is green bold
+  }
+};
 const nodeopts = {
   shape: "box",
   color: "#f0f0f0",
-  font: {
-    multi: true,
-    bold: {
-      color: '#ef004c' // Bold is red bold
-    },
-    ital: {
-      color: '#00b000',
-      mod: 'bold'  // Italic is green bold
-    }
-  }
-}
+  font: fontopts
+};
 const edgeopts = {
   font: {
-    multi: true,
-    bold: {
-      color: '#ef004c' // Bold is red bold
-    },
-    ital: {
-      color: '#00b000',
-      mod: 'bold'  // Italic is green bold
-    }
+    ...fontopts,
+    background: "#f9f9f9",
   }
-}
+};
 // Using a bipartite graph, persons on the left and projects on the right.
 const personNodeDefaults = { ...nodeopts, level: 0 }
 const projectNodeDefaults = { ...nodeopts, level: 1 }
@@ -88,7 +83,7 @@ function composeLabel(obj) {
   if (obj.name) {
     return `${taggedLogged}\n\n${obj.name}\n\n${alloc.toFixed(1)}`;
   } else {
-    return `${taggedLogged}\n\n${alloc.toFixed(1)}`;
+    return `${taggedLogged}\n${alloc.toFixed(1)}`;
   }
 }
 
@@ -222,7 +217,7 @@ function filterNetwork() {
       nodes: nodeopts,
       edges: edgeopts,
       physics: {
-        enabled: true,
+        enabled: false,
         solver: 'hierarchicalRepulsion',
         hierarchicalRepulsion: {
           centralGravity: 20,
@@ -238,10 +233,11 @@ function filterNetwork() {
       layout: {
         hierarchical: {
           enabled: true,
+          levelSeparation: 300,
           direction: 'LR', // Left-to-right layout
           sortMethod: 'directed',
-          blockShifting: false,
-          edgeMinimization: false
+          blockShifting: true,
+          edgeMinimization: true
         }
       }
     };

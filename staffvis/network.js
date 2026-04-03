@@ -78,7 +78,7 @@ function composeLabel(obj) {
   const logged = parseFloat(obj.logged_time) || 0;
   const alloc = parseFloat(obj.allocation) || 0;
   let taggedLogged = logged.toFixed(1);
-  
+
   if (logged < alloc) {
     taggedLogged = `<b>${taggedLogged}</b>`;
   } else {
@@ -179,8 +179,8 @@ function filterNetwork() {
       return fullNode;
     });
 
-    allEdges = jsonData.edges.map(edge => ({ 
-      ...edge, 
+    allEdges = jsonData.edges.map(edge => ({
+      ...edge,
       ...edgeopts,
       label: composeLabel(edge)
     }));
@@ -225,9 +225,10 @@ function filterNetwork() {
         enabled: true,
         solver: 'hierarchicalRepulsion',
         hierarchicalRepulsion: {
-          avoidOverlap: 1,
           centralGravity: 20,
-          nodeDistance: 300
+          nodeDistance: 200,
+          springLength: 200,
+          springConstant: 0.001,
         },
         stabilization: {
           enabled: true,
@@ -237,11 +238,10 @@ function filterNetwork() {
       layout: {
         hierarchical: {
           enabled: true,
-          nodeSpacing: 150,
           direction: 'LR', // Left-to-right layout
           sortMethod: 'directed',
           blockShifting: false,
-          edgeMinimization: true
+          edgeMinimization: false
         }
       }
     };
@@ -275,15 +275,14 @@ function filterNetwork() {
         Array.from(personSelector.options).forEach(opt => opt.selected = false);
         Array.from(projectSelector.options).forEach(opt => opt.selected = false);
       }
-      
+
       // Update graph based on new widget state
       filterNetwork();
     });
 
     // Initialize selectors and apply initial view
     initializeSelectors();
-    filterNetwork(); 
-    network.fit();
+    filterNetwork();
 
   } catch (error) {
     console.error('Failed to load or process data:', error);

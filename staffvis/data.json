@@ -4,55 +4,48 @@
       "id": 1,
       "name": "Alice Smith",
       "type": "person",
-      "level": 0,
       "logged_time": "34.0",
-      "allocation": "6.0"
+      "allocation": "30.0"
     },
     {
       "id": 2,
       "name": "Apple",
       "type": "project",
-      "level": 1,
       "logged_time": "322.5",
-      "allocation": "55.2"
+      "allocation": "276.0"
     },
     {
       "id": 3,
       "name": "Bob Johnson",
       "type": "person",
-      "level": 0,
       "logged_time": "37.8",
-      "allocation": "8.8"
+      "allocation": "44.0"
     },
     {
       "id": 4,
       "name": "Banana",
       "type": "project",
-      "level": 1,
       "logged_time": "0.0",
-      "allocation": "0.8"
+      "allocation": "4.0"
     },
     {
       "id": 5,
       "name": "Carol White",
       "type": "person",
-      "level": 0,
       "logged_time": "38.0",
-      "allocation": "7.2"
+      "allocation": "36.0"
     },
     {
       "id": 6,
       "name": "Cherry",
       "type": "project",
-      "level": 1,
       "logged_time": "81.3",
-      "allocation": "18.4"
+      "allocation": "92.0"
     },
     {
       "id": 7,
       "name": "Date",
       "type": "project",
-      "level": 1,
       "logged_time": "0.0",
       "allocation": "0.0"
     },
@@ -60,119 +53,104 @@
       "id": 8,
       "name": "David Green",
       "type": "person",
-      "level": 0,
       "logged_time": "15.8",
-      "allocation": "3.0"
+      "allocation": "15.0"
     },
     {
       "id": 9,
       "name": "Elderberry",
       "type": "project",
-      "level": 1,
       "logged_time": "56.0",
-      "allocation": "4.0"
+      "allocation": "20.0"
     },
     {
       "id": 10,
       "name": "Fig",
       "type": "project",
-      "level": 1,
       "logged_time": "0.0",
-      "allocation": "2.8"
+      "allocation": "14.0"
     },
     {
       "id": 11,
       "name": "Eve Black",
       "type": "person",
-      "level": 0,
       "logged_time": "40.0",
-      "allocation": "7.2"
+      "allocation": "36.0"
     },
     {
       "id": 12,
       "name": "Grape",
       "type": "project",
-      "level": 1,
       "logged_time": "199.8",
-      "allocation": "50.6"
+      "allocation": "253.0"
     },
     {
       "id": 13,
       "name": "Frank Brown",
       "type": "person",
-      "level": 0,
       "logged_time": "40.3",
-      "allocation": "7.5"
+      "allocation": "37.5"
     },
     {
       "id": 14,
       "name": "Grace Davis",
       "type": "person",
-      "level": 0,
       "logged_time": "0.0",
-      "allocation": "8.0"
+      "allocation": "40.0"
     },
     {
       "id": 15,
       "name": "Henry Wilson",
       "type": "person",
-      "level": 0,
       "logged_time": "26.0",
-      "allocation": "5.2"
+      "allocation": "26.0"
     },
     {
       "id": 16,
       "name": "Ivy Moore",
       "type": "person",
-      "level": 0,
       "logged_time": "39.5",
-      "allocation": "8.0"
+      "allocation": "40.0"
     },
     {
       "id": 17,
       "name": "Honeydew",
       "type": "project",
-      "level": 1,
       "logged_time": "0.0",
-      "allocation": "3.4"
+      "allocation": "17.0"
     },
     {
       "id": 18,
       "name": "Jack Taylor",
       "type": "person",
-      "level": 0,
       "logged_time": "36.0",
-      "allocation": "7.2"
+      "allocation": "36.0"
     },
     {
       "id": 19,
       "name": "Indian Fig",
       "type": "project",
-      "level": 1,
       "logged_time": "54.5",
-      "allocation": "10.6"
+      "allocation": "53.0"
     },
     {
       "id": 20,
       "name": "Jackfruit",
       "type": "project",
-      "level": 1,
       "logged_time": "20.3",
-      "allocation": "1.4"
+      "allocation": "7.0"
     },
     {
       "id": 21,
       "name": "Kate Miller",
       "type": "person",
-      "level": 0,
       "logged_time": "32.0",
-      "allocation": "6.4"
+      "allocation": "32.0"
     },
     {
       "id": 22,
       "name": "Kumquat",
       "type": "project",
-      "level": 1,
       "logged_time": "0.0",
       "allocation": "0.0"
     },
@@ -180,23 +158,20 @@
       "id": 23,
       "name": "Lemon",
       "type": "project",
-      "level": 1,
       "logged_time": "12.3",
-      "allocation": "1.3"
+      "allocation": "6.5"
     },
     {
       "id": 24,
       "name": "Liam Anderson",
       "type": "person",
-      "level": 0,
       "logged_time": "49.0",
-      "allocation": "7.2"
+      "allocation": "36.0"
     },
     {
       "id": 25,
       "name": "Mango",
       "type": "project",
-      "level": 1,
       "logged_time": "0.0",
       "allocation": "0.0"
     },
@@ -204,103 +179,90 @@
       "id": 26,
       "name": "Nectarine",
       "type": "project",
-      "level": 1,
       "logged_time": "28.5",
-      "allocation": "2.0"
+      "allocation": "10.0"
     },
     {
       "id": 27,
       "name": "Mia Thomas",
       "type": "person",
-      "level": 0,
       "logged_time": "39.3",
-      "allocation": "7.2"
+      "allocation": "36.0"
     },
     {
       "id": 28,
       "name": "Orange",
       "type": "project",
-      "level": 1,
       "logged_time": "13.8",
-      "allocation": "2.0"
+      "allocation": "10.0"
     },
     {
       "id": 29,
       "name": "Noah Jackson",
       "type": "person",
-      "level": 0,
       "logged_time": "36.0",
-      "allocation": "7.2"
+      "allocation": "36.0"
     },
     {
       "id": 30,
       "name": "Olivia Harris",
       "type": "person",
-      "level": 0,
       "logged_time": "40.0",
-      "allocation": "7.2"
+      "allocation": "36.0"
     },
     {
       "id": 31,
       "name": "Peter Clark",
       "type": "person",
-      "level": 0,
       "logged_time": "0.0",
-      "allocation": "0.5"
+      "allocation": "2.5"
     },
     {
       "id": 32,
       "name": "Papaya",
       "type": "project",
-      "level": 1,
       "logged_time": "21.8",
-      "allocation": "8.0"
+      "allocation": "40.0"
     },
     {
       "id": 33,
       "name": "Quinn Lewis",
       "type": "person",
-      "level": 0,
       "logged_time": "21.0",
-      "allocation": "5.0"
+      "allocation": "25.0"
     },
     {
       "id": 34,
       "name": "Rachel King",
       "type": "person",
-      "level": 0,
       "logged_time": "0.0",
-      "allocation": "2.0"
+      "allocation": "10.0"
     },
     {
       "id": 35,
       "name": "Sam Wright",
       "type": "person",
-      "level": 0,
       "logged_time": "30.0",
-      "allocation": "0.5"
+      "allocation": "2.5"
     },
     {
       "id": 36,
       "name": "Tina Hall",
       "type": "person",
-      "level": 0,
       "logged_time": "35.8",
-      "allocation": "7.2"
+      "allocation": "36.0"
     },
     {
       "id": 37,
       "name": "Uma Scott",
       "type": "person",
-      "level": 0,
       "logged_time": "37.3",
-      "allocation": "7.2"
+      "allocation": "36.0"
     },
     {
       "id": 38,
       "name": "Quince",
       "type": "project",
-      "level": 1,
       "logged_time": "0.5",
       "allocation": "0.0"
     },
@@ -308,399 +270,349 @@
       "id": 39,
       "name": "Victor Adams",
       "type": "person",
-      "level": 0,
       "logged_time": "36.0",
-      "allocation": "7.5"
+      "allocation": "37.5"
     },
     {
       "id": 40,
       "name": "Wendy Baker",
       "type": "person",
-      "level": 0,
       "logged_time": "36.8",
-      "allocation": "7.2"
+      "allocation": "36.0"
     },
     {
       "id": 41,
       "name": "Xena Turner",
       "type": "person",
-      "level": 0,
       "logged_time": "39.0",
-      "allocation": "7.2"
+      "allocation": "36.0"
     },
     {
       "id": 42,
       "name": "Yash Walker",
       "type": "person",
-      "level": 0,
       "logged_time": "36.0",
-      "allocation": "10.4"
+      "allocation": "52.0"
     },
     {
       "id": 43,
       "name": "Raspberry",
       "type": "project",
-      "level": 1,
       "logged_time": "11.5",
-      "allocation": "3.8"
+      "allocation": "19.0"
     },
     {
       "id": 44,
       "name": "Zoe Young",
       "type": "person",
-      "level": 0,
       "logged_time": "40.0",
-      "allocation": "7.2"
+      "allocation": "36.0"
     },
     {
       "id": 45,
       "name": "Adam Carter",
       "type": "person",
-      "level": 0,
       "logged_time": "19.0",
-      "allocation": "7.2"
+      "allocation": "36.0"
     },
     {
       "id": 46,
       "name": "Strawberry",
       "type": "project",
-      "level": 1,
       "logged_time": "6.3",
-      "allocation": "2.0"
+      "allocation": "10.0"
     },
     {
       "id": 47,
       "name": "Bella Perez",
       "type": "person",
-      "level": 0,
       "logged_time": "36.5",
-      "allocation": "10.4"
+      "allocation": "52.0"
     },
     {
       "id": 48,
       "name": "Tangerine",
       "type": "project",
-      "level": 1,
       "logged_time": "0.0",
-      "allocation": "3.2"
+      "allocation": "16.0"
     },
     {
       "id": 49,
       "name": "Ugli Fruit",
       "type": "project",
-      "level": 1,
       "logged_time": "27.8",
-      "allocation": "8.0"
+      "allocation": "40.0"
     },
     {
       "id": 50,
       "name": "Vanilla Bean",
       "type": "project",
-      "level": 1,
       "logged_time": "58.8",
-      "allocation": "10.5"
+      "allocation": "52.5"
     },
     {
       "id": 51,
       "name": "Watermelon",
       "type": "project",
-      "level": 1,
       "logged_time": "5.8",
-      "allocation": "0.8"
+      "allocation": "4.0"
     },
     {
       "id": 52,
       "name": "Chris Evans",
       "type": "person",
-      "level": 0,
       "logged_time": "40.8",
-      "allocation": "7.2"
+      "allocation": "36.0"
     },
     {
       "id": 53,
       "name": "Diana Rodriguez",
       "type": "person",
-      "level": 0,
       "logged_time": "36.0",
-      "allocation": "7.2"
+      "allocation": "36.0"
     },
     {
       "id": 54,
       "name": "Ethan Martinez",
       "type": "person",
-      "level": 0,
       "logged_time": "36.0",
-      "allocation": "7.2"
+      "allocation": "36.0"
     },
     {
       "id": 55,
       "name": "Xigua",
       "type": "project",
-      "level": 1,
       "logged_time": "6.0",
-      "allocation": "1.2"
+      "allocation": "6.0"
     },
     {
       "id": 56,
       "name": "Fiona Hernandez",
       "type": "person",
-      "level": 0,
       "logged_time": "36.0",
-      "allocation": "8.0"
+      "allocation": "40.0"
     },
     {
       "id": 57,
       "name": "Yellow Passion Fruit",
       "type": "project",
-      "level": 1,
       "logged_time": "28.0",
-      "allocation": "4.4"
+      "allocation": "22.0"
     },
     {
       "id": 58,
       "name": "George Lee",
       "type": "person",
-      "level": 0,
       "logged_time": "36.0",
-      "allocation": "7.2"
+      "allocation": "36.0"
     },
     {
       "id": 59,
       "name": "Zucchini",
       "type": "project",
-      "level": 1,
       "logged_time": "20.0",
-      "allocation": "4.0"
+      "allocation": "20.0"
     },
     {
       "id": 60,
       "name": "Hannah Garcia",
       "type": "person",
-      "level": 0,
       "logged_time": "18.0",
-      "allocation": "4.0"
+      "allocation": "20.0"
     },
     {
       "id": 61,
       "name": "Apricot",
       "type": "project",
-      "level": 1,
       "logged_time": "0.0",
-      "allocation": "0.8"
+      "allocation": "4.0"
     },
     {
       "id": 62,
       "name": "Isaac Kim",
       "type": "person",
-      "level": 0,
       "logged_time": "40.0",
-      "allocation": "7.2"
+      "allocation": "36.0"
     },
     {
       "id": 63,
       "name": "Blackberry",
       "type": "project",
-      "level": 1,
       "logged_time": "192.8",
-      "allocation": "7.2"
+      "allocation": "36.0"
     },
     {
       "id": 64,
       "name": "Julia Chen",
       "type": "person",
-      "level": 0,
       "logged_time": "40.0",
-      "allocation": "7.2"
+      "allocation": "36.0"
     },
     {
       "id": 65,
       "name": "Cranberry",
       "type": "project",
-      "level": 1,
       "logged_time": "2.8",
-      "allocation": "3.6"
+      "allocation": "18.0"
     },
     {
       "id": 66,
       "name": "Kevin Green",
       "type": "person",
-      "level": 0,
       "logged_time": "40.0",
-      "allocation": "7.2"
+      "allocation": "36.0"
     },
     {
       "id": 67,
       "name": "Durian",
       "type": "project",
-      "level": 1,
       "logged_time": "40.0",
-      "allocation": "7.4"
+      "allocation": "37.0"
     },
     {
       "id": 68,
       "name": "Eggplant",
       "type": "project",
-      "level": 1,
       "logged_time": "72.0",
-      "allocation": "13.4"
+      "allocation": "67.0"
     },
     {
       "id": 69,
       "name": "Lily Hall",
       "type": "person",
-      "level": 0,
       "logged_time": "40.0",
-      "allocation": "7.2"
+      "allocation": "36.0"
     },
     {
       "id": 70,
       "name": "Feijoa",
       "type": "project",
-      "level": 1,
       "logged_time": "40.0",
-      "allocation": "7.2"
+      "allocation": "36.0"
     },
     {
       "id": 71,
       "name": "Mike Davis",
       "type": "person",
-      "level": 0,
       "logged_time": "37.5",
-      "allocation": "14.4"
+      "allocation": "72.0"
     },
     {
       "id": 72,
       "name": "Guava",
       "type": "project",
-      "level": 1,
       "logged_time": "0.0",
-      "allocation": "7.2"
+      "allocation": "36.0"
     },
     {
       "id": 73,
       "name": "Huckleberry",
       "type": "project",
-      "level": 1,
       "logged_time": "84.8",
-      "allocation": "21.4"
+      "allocation": "107.0"
     },
     {
       "id": 74,
       "name": "Nina Brown",
       "type": "person",
-      "level": 0,
       "logged_time": "37.0",
-      "allocation": "7.2"
+      "allocation": "36.0"
     },
     {
       "id": 75,
       "name": "Imbe",
       "type": "project",
-      "level": 1,
       "logged_time": "29.3",
-      "allocation": "5.6"
+      "allocation": "28.0"
     },
     {
       "id": 76,
       "name": "Java Plum",
       "type": "project",
-      "level": 1,
       "logged_time": "1.0",
-      "allocation": "0.2"
+      "allocation": "1.0"
     },
     {
       "id": 77,
       "name": "Kiwi",
       "type": "project",
-      "level": 1,
       "logged_time": "71.8",
-      "allocation": "4.0"
+      "allocation": "20.0"
     },
     {
       "id": 78,
       "name": "Oliver White",
       "type": "person",
-      "level": 0,
       "logged_time": "40.0",
-      "allocation": "7.2"
+      "allocation": "36.0"
     },
     {
       "id": 79,
       "name": "Penny Johnson",
       "type": "person",
-      "level": 0,
       "logged_time": "63.0",
-      "allocation": "7.2"
+      "allocation": "36.0"
     },
     {
       "id": 80,
       "name": "Robert Smith",
       "type": "person",
-      "level": 0,
       "logged_time": "43.0",
-      "allocation": "1.6"
+      "allocation": "8.0"
     },
     {
       "id": 81,
       "name": "Lychee",
       "type": "project",
-      "level": 1,
       "logged_time": "131.3",
-      "allocation": "20.2"
+      "allocation": "101.0"
     },
     {
       "id": 82,
       "name": "Josh Parker",
       "type": "person",
-      "level": 0,
       "logged_time": "40.0",
-      "allocation": "7.2"
+      "allocation": "36.0"
     },
     {
       "id": 83,
       "name": "Brandon Keen",
       "type": "person",
-      "level": 0,
       "logged_time": "40.0",
-      "allocation": "7.2"
+      "allocation": "36.0"
     },
     {
       "id": 84,
       "name": "Lychee",
       "type": "project",
-      "level": 1,
       "logged_time": "36.8",
-      "allocation": "29.4"
+      "allocation": "147.0"
     },
     {
       "id": 85,
       "name": "Sarah Miller",
       "type": "person",
-      "level": 0,
       "logged_time": "30.0",
-      "allocation": "7.2"
+      "allocation": "36.0"
     },
     {
       "id": 86,
       "name": "Tom Jones",
       "type": "person",
-      "level": 0,
       "logged_time": "37.3",
-      "allocation": "7.2"
+      "allocation": "36.0"
     },
     {
       "id": 87,
       "name": "Vicky Williams",
       "type": "person",
-      "level": 0,
       "logged_time": "56.0",
-      "allocation": "7.2"
+      "allocation": "36.0"
     },
     {
       "id": 88,
       "name": "Walter Clark",
       "type": "person",
-      "level": 0,
       "logged_time": "32.0",
       "allocation": "0.0"
     },
@@ -708,7 +620,6 @@
       "id": 89,
       "name": "Mulberry",
       "type": "project",
-      "level": 1,
       "logged_time": "32.0",
       "allocation": "0.0"
     },
@@ -716,7 +627,6 @@
       "id": 90,
       "name": "Yvonne Green",
       "type": "person",
-      "level": 0,
       "logged_time": "40.0",
       "allocation": "0.0"
     },
@@ -724,7 +634,6 @@
       "id": 91,
       "name": "Zach Taylor",
       "type": "person",
-      "level": 0,
       "logged_time": "18.0",
       "allocation": "0.0"
     },
@@ -732,7 +641,6 @@
       "id": 92,
       "name": "Olive",
       "type": "project",
-      "level": 1,
       "logged_time": "131.0",
       "allocation": "0.0"
     },
@@ -740,7 +648,6 @@
       "id": 93,
       "name": "Abigail King",
       "type": "person",
-      "level": 0,
       "logged_time": "40.0",
       "allocation": "0.0"
     },
@@ -748,7 +655,6 @@
       "id": 94,
       "name": "Peach",
       "type": "project",
-      "level": 1,
       "logged_time": "111.5",
       "allocation": "0.0"
     },
@@ -756,7 +662,6 @@
       "id": 95,
       "name": "Benjamin Lee",
       "type": "person",
-      "level": 0,
       "logged_time": "40.3",
       "allocation": "0.0"
     },
@@ -764,7 +669,6 @@
       "id": 96,
       "name": "Charlotte Hall",
       "type": "person",
-      "level": 0,
       "logged_time": "16.0",
       "allocation": "0.0"
     },
@@ -772,7 +676,6 @@
       "id": 97,
       "name": "Persimmon",
       "type": "project",
-      "level": 1,
       "logged_time": "16.0",
       "allocation": "0.0"
     },
@@ -780,7 +683,6 @@
       "id": 98,
       "name": "Daniel Garcia",
       "type": "person",
-      "level": 0,
       "logged_time": "40.0",
       "allocation": "0.0"
     },
@@ -788,7 +690,6 @@
       "id": 99,
       "name": "Pineapple",
       "type": "project",
-      "level": 1,
       "logged_time": "40.0",
       "allocation": "0.0"
     },
@@ -796,7 +697,6 @@
       "id": 100,
       "name": "Plum",
       "type": "project",
-      "level": 1,
       "logged_time": "12.5",
       "allocation": "0.0"
     },
@@ -804,7 +704,6 @@
       "id": 101,
       "name": "Emily Brown",
       "type": "person",
-      "level": 0,
       "logged_time": "5.5",
       "allocation": "0.0"
     },
@@ -812,7 +711,6 @@
       "id": 102,
       "name": "Fred White",
       "type": "person",
-      "level": 0,
       "logged_time": "36.3",
       "allocation": "0.0"
     },
@@ -820,7 +718,6 @@
       "id": 103,
       "name": "Gina Harris",
       "type": "person",
-      "level": 0,
       "logged_time": "41.0",
       "allocation": "0.0"
     },
@@ -828,7 +725,6 @@
       "id": 104,
       "name": "Harry Davis",
       "type": "person",
-      "level": 0,
       "logged_time": "42.3",
       "allocation": "0.0"
     },
@@ -836,7 +732,6 @@
       "id": 105,
       "name": "Irene Wilson",
       "type": "person",
-      "level": 0,
       "logged_time": "40.0",
       "allocation": "0.0"
     },
@@ -844,7 +739,6 @@
       "id": 106,
       "name": "Rambutan",
       "type": "project",
-      "level": 1,
       "logged_time": "2.0",
       "allocation": "0.0"
     },
@@ -852,7 +746,6 @@
       "id": 107,
       "name": "John Moore",
       "type": "person",
-      "level": 0,
       "logged_time": "5.0",
       "allocation": "0.0"
     },
@@ -860,7 +753,6 @@
       "id": 108,
       "name": "Salak",
       "type": "project",
-      "level": 1,
       "logged_time": "5.0",
       "allocation": "0.0"
     },
@@ -868,7 +760,6 @@
       "id": 109,
       "name": "Sapodilla",
       "type": "project",
-      "level": 1,
       "logged_time": "2.5",
       "allocation": "0.0"
     },
@@ -876,7 +767,6 @@
       "id": 110,
       "name": "Tamarind",
       "type": "project",
-      "level": 1,
       "logged_time": "23.8",
       "allocation": "0.0"
     }

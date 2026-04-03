@@ -34,8 +34,16 @@ const projectNodeDefaults = { ...nodeopts, level: 1 }
 let nodesDataSet;
 let edgesDataSet;
 let network;
+let allNodes = [];
+let allEdges = [];
 let allPeopleNames = [];
 let allProjectNames = [];
+
+// Optimized lookup maps
+let nodeMap = new Map();
+let nodeNameToIdMap = new Map();
+let personToProjectsMap = new Map();
+let projectToPeopleMap = new Map();
 
 // Function to initialize the multi-select dropdowns
 function initializeSelectors() {
@@ -47,7 +55,7 @@ function initializeSelectors() {
     const option = document.createElement('option');
     option.value = name;
     option.textContent = name;
-    option.selected = true; // Select all by default
+    option.selected = false; // Start with none selected (which shows all)
     personSelector.appendChild(option);
   });
 
@@ -56,7 +64,7 @@ function initializeSelectors() {
     const option = document.createElement('option');
     option.value = name;
     option.textContent = name;
-    option.selected = true; // Select all by default
+    option.selected = false; // Start with none selected
     projectSelector.appendChild(option);
   });
 
@@ -77,113 +85,55 @@ function filterNetwork() {
   const allPeopleSelected = selectedPeople.length === 0;
   const allProjectsSelected = selectedProjects.length === 0;
 
-  const updatedNodes = [];
-  const updatedEdges = [];
-
   // Determine visible nodes
   const visibleNodeIds = new Set();
 
-  // Map node names to their IDs for quick lookup
-  const nodeNameToIdMap = new Map();
-  nodesDataSet.forEach(node => {
-    if (node.name) {
-      nodeNameToIdMap.set(node.name, node.id);
-    }
-  });
-
-  // Infer connections from edges to determine which people are linked to which projects.
-  const personToProjectsMap = new Map();
-  const projectToPeopleMap = new Map();
-
-  edgesDataSet.forEach(edge => {
-    const fromNode = nodesDataSet.get(edge.from);
-    const toNode = nodesDataSet.get(edge.to);
-
-    if (!fromNode || !toNode) return; // Safety check
-
-    let personNode, projectNode;
-    if (fromNode.type === 'person' && toNode.type === 'project') {
-      personNode = fromNode;
-      projectNode = toNode;
-    } else if (fromNode.type === 'project' && toNode.type === 'person') {
-      personNode = toNode;
-      projectNode = fromNode;
-    } else {
-      return; // Not a person-project connection
-    }
-
-    const personName = personNode.name;
-    const projectName = projectNode.name;
-
-    if (personName && projectName) {
-      if (!personToProjectsMap.has(personName)) {
-        personToProjectsMap.set(personName, new Set());
-      }
-      personToProjectsMap.get(personName).add(projectName);
-
-      if (!projectToPeopleMap.has(projectName)) {
-        projectToPeopleMap.set(projectName, new Set());
-      }
-      projectToPeopleMap.get(projectName).add(personName);
-    }
-  });
-
-  // Determine visible nodes based on selections and inferred connections
-  // Add selected people and their connected projects
-  selectedPeople.forEach(personName => {
-    const personId = nodeNameToIdMap.get(personName);
-    if (personId !== undefined) visibleNodeIds.add(personId);
-
-    if (personToProjectsMap.has(personName)) {
-      personToProjectsMap.get(personName).forEach(projectName => {
-        const projectId = nodeNameToIdMap.get(projectName);
-        if (projectId !== undefined) visibleNodeIds.add(projectId);
-      });
-    }
-  });
-
-  // Add selected projects and their connected people
-  selectedProjects.forEach(projectName => {
-    const projectId = nodeNameToIdMap.get(projectName);
-    if (projectId !== undefined) visibleNodeIds.add(projectId);
-
-    if (projectToPeopleMap.has(projectName)) {
-      projectToPeopleMap.get(projectName).forEach(personName => {
-        const personId = nodeNameToIdMap.get(personName);
-        if (personId !== undefined) visibleNodeIds.add(personId);
-      });
-    }
-  });
-
-  // If all people and projects are implicitly selected (no filters applied or all selected), all nodes should be visible.
   if (allPeopleSelected && allProjectsSelected) {
-    nodesDataSet.forEach(node => {
-      visibleNodeIds.add(node.id);
+    // Show everything if no specific filters are applied
+    allNodes.forEach(node => visibleNodeIds.add(node.id));
+  } else {
+    // Add selected people and their connected projects
+    selectedPeople.forEach(personName => {
+      const personId = nodeNameToIdMap.get(personName);
+      if (personId !== undefined) {
+        visibleNodeIds.add(personId);
+        // Add connected projects
+        if (personToProjectsMap.has(personName)) {
+          personToProjectsMap.get(personName).forEach(projectName => {
+            const projectId = nodeNameToIdMap.get(projectName);
+            if (projectId !== undefined) visibleNodeIds.add(projectId);
+          });
+        }
+      }
+    });
+
+    // Add selected projects and their connected people
+    selectedProjects.forEach(projectName => {
+      const projectId = nodeNameToIdMap.get(projectName);
+      if (projectId !== undefined) {
+        visibleNodeIds.add(projectId);
+        // Add connected people
+        if (projectToPeopleMap.has(projectName)) {
+          projectToPeopleMap.get(projectName).forEach(personName => {
+            const personId = nodeNameToIdMap.get(personName);
+            if (personId !== undefined) visibleNodeIds.add(personId);
+          });
+        }
+      }
     });
   }
 
-  // Update nodes: mark visible or hidden
-  nodesDataSet.forEach(node => {
-    const isVisible = visibleNodeIds.has(node.id);
-    updatedNodes.push({ id: node.id, hidden: !isVisible });
-  });
-  nodesDataSet.update(updatedNodes);
+  // Update DataSets by adding/removing instead of hiding to prevent hidden nodes affecting layout
+  const nodesToDisplay = allNodes.filter(node => visibleNodeIds.has(node.id));
+  const edgesToDisplay = allEdges.filter(edge => visibleNodeIds.has(edge.from) && visibleNodeIds.has(edge.to));
 
-  // Update edges: mark visible or hidden based on connected nodes visibility
-  edgesDataSet.forEach(edge => {
-    const fromNodeVisible = visibleNodeIds.has(edge.from);
-    const toNodeVisible = visibleNodeIds.has(edge.to);
-    // An edge is visible only if both its connected nodes are visible
-    const isVisible = fromNodeVisible && toNodeVisible;
-    updatedEdges.push({ id: edge.id, hidden: !isVisible });
-  });
-  edgesDataSet.update(updatedEdges);
+  nodesDataSet.clear();
+  nodesDataSet.add(nodesToDisplay);
+  edgesDataSet.clear();
+  edgesDataSet.add(edgesToDisplay);
 
-  // Stabilize the network after updating visibility
-  network.setOptions({ physics: { enabled: true } });
-  network.stabilize(100); // physics is on
+  // Trigger relaxation and fit
   network.fit();
-  network.stabilize(100); // physics is off
 }
 
 
@@ -197,17 +147,35 @@ function filterNetwork() {
     const jsonData = await response.json();
 
     // Directly use nodes and edges from the parsed JSON
-    const initialNodes = jsonData.nodes;
-    const initialEdges = jsonData.edges;
-
-    // Extract all unique person and project names for selectors
-    initialNodes.forEach(node => {
+    allNodes = jsonData.nodes.map(node => {
+      let defaults = node.type === 'person' ? personNodeDefaults : projectNodeDefaults;
+      let fullNode = { ...defaults, ...node };
+      nodeMap.set(node.id, fullNode);
       if (node.name) {
-        if (node.type === 'person') {
-          allPeopleNames.push(node.name);
-        } else if (node.type === 'project') {
-          allProjectNames.push(node.name);
-        }
+        nodeNameToIdMap.set(node.name, node.id);
+        if (node.type === 'person') allPeopleNames.push(node.name);
+        else if (node.type === 'project') allProjectNames.push(node.name);
+      }
+      return fullNode;
+    });
+
+    allEdges = jsonData.edges.map(edge => ({ ...edge, ...edgeopts }));
+
+    // Build connection maps for filtering
+    allEdges.forEach(edge => {
+      const fromNode = nodeMap.get(edge.from);
+      const toNode = nodeMap.get(edge.to);
+      if (!fromNode || !toNode) return;
+
+      const personNode = fromNode.type === 'person' ? fromNode : (toNode.type === 'person' ? toNode : null);
+      const projectNode = fromNode.type === 'project' ? fromNode : (toNode.type === 'project' ? toNode : null);
+
+      if (personNode && projectNode) {
+        if (!personToProjectsMap.has(personNode.name)) personToProjectsMap.set(personNode.name, new Set());
+        personToProjectsMap.get(personNode.name).add(projectNode.name);
+
+        if (!projectToPeopleMap.has(projectNode.name)) projectToPeopleMap.set(projectNode.name, new Set());
+        projectToPeopleMap.get(projectNode.name).add(personNode.name);
       }
     });
 
@@ -216,18 +184,8 @@ function filterNetwork() {
     allProjectNames.sort();
 
     // Initialize vis.DataSet instances
-    nodesDataSet = new vis.DataSet(initialNodes.map(node => {
-      if (node.type === 'person') {
-        return { ...node, ...personNodeDefaults };
-      } else if (node.type === 'project') {
-        return { ...node, ...projectNodeDefaults };
-      }
-      return node;
-    }));
-
-    edgesDataSet = new vis.DataSet(initialEdges.map(edge => {
-      return { ...edge, ...edgeopts };
-    }));
+    nodesDataSet = new vis.DataSet();
+    edgesDataSet = new vis.DataSet();
 
     // Render network
     const container = document.getElementById('mynetwork');
@@ -241,7 +199,16 @@ function filterNetwork() {
       edges: edgeopts,
       physics: {
         enabled: true,
-        //solver: 'barnesHut',
+        solver: 'hierarchicalRepulsion',
+        hierarchicalRepulsion: {
+          avoidOverlap: 1,
+          centralGravity: 20,
+          nodeDistance: 300
+        },
+        stabilization: {
+          enabled: true,
+          iterations: 100
+        }
       },
       layout: {
         hierarchical: {
@@ -249,23 +216,53 @@ function filterNetwork() {
           nodeSpacing: 150,
           direction: 'LR', // Left-to-right layout
           sortMethod: 'directed',
-          blockShifting: true,
+          blockShifting: false,
           edgeMinimization: true
         }
       }
     };
     network = new vis.Network(container, graphData, options);
-    network.on("stabilized", () => {
-      network.setOptions({ physics: { enabled: false } });
+
+    // Node click handler: synchronize with selection widgets
+    network.on("click", (params) => {
+      const personSelector = document.getElementById('person-selector');
+      const projectSelector = document.getElementById('project-selector');
+
+      if (params.nodes.length > 0) {
+        const clickedNodeId = params.nodes[0];
+        const clickedNode = nodeMap.get(clickedNodeId);
+
+        if (clickedNode) {
+          // Clear previous selections in widgets
+          Array.from(personSelector.options).forEach(opt => opt.selected = false);
+          Array.from(projectSelector.options).forEach(opt => opt.selected = false);
+
+          // Select the clicked node in its corresponding widget
+          if (clickedNode.type === 'person') {
+            const opt = Array.from(personSelector.options).find(o => o.value === clickedNode.name);
+            if (opt) opt.selected = true;
+          } else if (clickedNode.type === 'project') {
+            const opt = Array.from(projectSelector.options).find(o => o.value === clickedNode.name);
+            if (opt) opt.selected = true;
+          }
+        }
+      } else {
+        // Clear all filters if clicking on the background
+        Array.from(personSelector.options).forEach(opt => opt.selected = false);
+        Array.from(projectSelector.options).forEach(opt => opt.selected = false);
+      }
+      
+      // Update graph based on new widget state
+      filterNetwork();
     });
 
-    // Initialize selectors and apply initial filter
+    // Initialize selectors and apply initial view
     initializeSelectors();
-    filterNetwork(); // Apply initial filter (all selected)
+    filterNetwork(); 
+    network.fit();
 
   } catch (error) {
     console.error('Failed to load or process data:', error);
-    // Optionally display an error message in the UI
     const mynetworkContainer = document.getElementById('mynetwork');
     if (mynetworkContainer) {
       mynetworkContainer.textContent = 'Error loading data. Please check console for details.';
